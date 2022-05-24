@@ -2,7 +2,8 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="imagens/logoCompletaColorida.png" width="400"
+                height="341" alt="logo da afel que leva a tela inicial">
             </a>
         </x-slot>
 
