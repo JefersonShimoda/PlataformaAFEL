@@ -41,6 +41,8 @@ class RegisteredUserController extends Controller
             'cpf' => ['required', 'cpf'],
             'telefone' => ['required', 'celular_com_ddd'],
             'cep' => ['required', 'formato_cep'],
+            'cid' => ['required', 'max:3'],
+            'nascimento' => ['required', 'date_format:d/m/Y'],
         ]);
 
         $user = User::create([
@@ -52,6 +54,10 @@ class RegisteredUserController extends Controller
             'cpf' => $request->cpf,
             'telefone' => $request->telefone,
             'cep' => $request->cep,
+            'cid' => $request->cid,
+            'obs' => $request->obs,
+            'nascimento' => $request->nascimento,
+            'escola' =>  $request->escola,
         ]);
 
         event(new Registered($user));

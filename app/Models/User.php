@@ -26,6 +26,10 @@ class User extends Authenticatable
         'cpf',
         'telefone',
         'cep',
+        'cid',
+        'obs',
+        'nascimento',
+        'escola'
     ];
 
     /**
