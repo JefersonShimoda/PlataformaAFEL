@@ -10,7 +10,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <ul id="div-errors" class="ml-3 mb-4 text-sm text-red-600 hidden list-disc"></ul>
+        <ul id="div-errors" class="ml-3 mb-4 text-sm text-red-600 hidden list-disc "></ul>
 
         <form method="POST" id="form-register" action="{{ route('register') }}">
             @csrf
@@ -114,7 +114,7 @@
                 </div>
 
                 {{-- escola --}}
-                <div class="mt-4">
+                <div class="mt-4 ">
                     <x-label for="escola" :value="__('Escola')" />
                     <select name="escola" id="escola" class="block mt-1 w-full" required>
                         <option value="nfescola">Não frequenta escola</option>
