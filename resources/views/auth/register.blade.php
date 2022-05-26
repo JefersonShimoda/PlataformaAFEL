@@ -2,15 +2,17 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <img src="imagens/logoCompletaColorida.png" width="400"
-                height="341" alt="logo da afel que leva a tela inicial">
+                <img src="imagens/logoCompletaColorida.png" width="400" height="341"
+                    alt="logo da afel que leva a tela inicial">
             </a>
         </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <ul id="div-errors" class="ml-3 mb-4 text-sm text-red-600 hidden list-disc"></ul>
+
+        <form method="POST" id="form-register" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
@@ -44,18 +46,8 @@
                     name="password_confirmation" required />
             </div>
 
-            {{-- tipo usuario --}}
-            <div>
-                <x-label for="tipo" :value="__('Selecione o seu perfil')" />
-                <select name="tipo" id="tipo" class="block mt-1 w-full" required>
-                    <option value="associado">Associado</option>
-                    <option value="colaborador">Colaborador</option>
-                    <option value="gestor">Gestor</option>
-                </select>
-            </div>
-
-             {{-- sexo --}}
-             <div>
+            {{-- sexo --}}
+            <div class="mt-4">
                 <x-label for="sexo" :value="__('Sexo')" />
                 <select name="sexo" id="sexo" class="block mt-1 w-full" required>
                     <option value="feminino">Feminino</option>
@@ -64,14 +56,14 @@
             </div>
 
             {{-- CPF --}}
-            <div>
+            <div class="mt-4">
                 <x-label for="cpf" :value="__('CPF')" />
 
-                <x-input id="cpf" class="block mt-1 w-full cpf" type="text" name="cpf" :value="old('cpf')" required/>
+                <x-input id="cpf" class="block mt-1 w-full cpf" type="text" name="cpf" :value="old('cpf')" required />
             </div>
 
             {{-- telefone --}}
-            <div>
+            <div class="mt-4">
                 <x-label for="telefone" :value="__('Contato')" />
 
                 <x-input id="telefone" class="block mt-1 w-full phone" type="text" name="telefone" :value="old('telefone')"
@@ -79,44 +71,57 @@
             </div>
 
             {{-- cep --}}
-            <div>
+            <div class="mt-4">
                 <x-label for="cep" :value="__('CEP')" />
 
-                <x-input id="cep" class="block mt-1 w-full cep" type="text" name="cep" :value="old('cep')" required/>
+                <x-input id="cep" class="block mt-1 w-full cep" type="text" name="cep" :value="old('cep')" required />
             </div>
 
-            {{-- CID --}}
-            <div>
-            <x-label for="cid" :value="__('CID')" />
-
-            <x-input id="cid" class="block mt-1 w-full " type="text" name="cid" :value="old('cid')"
-                required placeholder="A00" />
-            </div>
-
-            {{-- observação --}}
-            <div>
-            <x-label for="obs" :value="__('Observação: ')" />
-
-            <x-input id="obs" class="block mt-1 w-full " type="text" name="obs" :value="old('obs')" />
-            </div>
-
-            {{-- data de nascimento --}}
-            <div>
-            <x-label for="nascimento" :value="__('Data de Nascimento')" />
-
-            <x-input id="nascimento" class="block mt-1 w-full date" type="text" name="nascimento" :value="old('nascimento')"
-                required placeholder="DD/MM/AAAA" />
-            </div>
-
-            {{-- escola --}}
-            <div>
-                <x-label for="escola" :value="__('Escola')" />
-                <select name="escola" id="escola" class="block mt-1 w-full" required>
-                    <option value="nfescola">Não frequenta escola</option>
-                    <option value="especial">Escola Especial</option>
-                    <option value="publica">Escola Pública</option>
-                    <option value="particular">Escola Particular</option>
+            {{-- tipo usuario --}}
+            <div class="mt-4">
+                <x-label for="tipo" :value="__('Selecione o seu perfil')" />
+                <select name="tipo" id="tipo" class="block mt-1 w-full" required>
+                    <option value=""></option>
+                    <option value="associado">Associado</option>
+                    <option value="colaborador">Colaborador</option>
+                    <option value="gestor">Gestor</option>
                 </select>
+            </div>
+
+            <div id="form-associado" class="hidden">
+                {{-- CID --}}
+                <div class="mt-4">
+                    <x-label for="cid" :value="__('CID')" />
+
+                    <x-input id="cid" class="block mt-1 w-full " type="text" name="cid" :value="old('cid')" required
+                        placeholder="A00" />
+                </div>
+
+                {{-- observação --}}
+                <div class="mt-4">
+                    <x-label for="obs" :value="__('Observação: ')" />
+
+                    <x-input id="obs" class="block mt-1 w-full " type="text" name="obs" :value="old('obs')" />
+                </div>
+
+                {{-- data de nascimento --}}
+                <div class="mt-4">
+                    <x-label for="nascimento" :value="__('Data de Nascimento')" />
+
+                    <x-input id="nascimento" class="block mt-1 w-full date" type="text" name="nascimento"
+                        :value="old('nascimento')" required placeholder="DD/MM/AAAA" />
+                </div>
+
+                {{-- escola --}}
+                <div class="mt-4">
+                    <x-label for="escola" :value="__('Escola')" />
+                    <select name="escola" id="escola" class="block mt-1 w-full" required>
+                        <option value="nfescola">Não frequenta escola</option>
+                        <option value="especial">Escola Especial</option>
+                        <option value="publica">Escola Pública</option>
+                        <option value="particular">Escola Particular</option>
+                    </select>
+                </div>
             </div>
 
             <div class="flex items-center justify-end mt-4">

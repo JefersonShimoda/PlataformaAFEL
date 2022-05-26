@@ -34,16 +34,27 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'cpf' => ['required', 'cpf'],
-            'telefone' => ['required', 'celular_com_ddd'],
-            'cep' => ['required', 'formato_cep'],
-            'cid' => ['required', 'max:3'],
-            'nascimento' => ['required', 'date_format:d/m/Y'],
-        ]);
+        if ($request->tipo == "associado") {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'cpf' => ['required', 'cpf'],
+                'telefone' => ['required', 'celular_com_ddd'],
+                'cep' => ['required', 'formato_cep'],
+                'cid' => ['required', 'max:3'],
+                'nascimento' => ['required', 'date_format:d/m/Y'],
+            ]);
+        } else {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'cpf' => ['required', 'cpf'],
+                'telefone' => ['required', 'celular_com_ddd'],
+                'cep' => ['required', 'formato_cep'],
+            ]);
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -54,10 +65,10 @@ class RegisteredUserController extends Controller
             'cpf' => $request->cpf,
             'telefone' => $request->telefone,
             'cep' => $request->cep,
-            'cid' => $request->cid,
-            'obs' => $request->obs,
-            'nascimento' => $request->nascimento,
-            'escola' =>  $request->escola,
+            'cid' => $request->tipo == "associado" ? $request->cid : null,
+            'obs' => $request->tipo == "associado" ? $request->obs : null,
+            'nascimento' => $request->tipo == "associado" ? $request->nascimento : null,
+            'escola' =>  $request->tipo == "associado" ? $request->escola : null,
         ]);
 
         event(new Registered($user));

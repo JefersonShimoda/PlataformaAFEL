@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.date').mask('00/00/0000');
     $('.time').mask('00:00:00');
     $('.cep').mask('00000-000');
@@ -8,11 +8,20 @@ $(document).ready(function(){
     var SPMaskBehavior = function (val) {
         return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
     },
-    spOptions = {
-        onKeyPress: function(val, e, field, options) {
-            field.mask(SPMaskBehavior.apply({}, arguments), options);
-        }
-    };
+        spOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(SPMaskBehavior.apply({}, arguments), options);
+            }
+        };
 
     $('.phone').mask(SPMaskBehavior, spOptions);
+});
+
+$("#form-register #tipo").change(function () {
+    var tipo = $(this).val();
+    if (tipo == "associado") {
+        $("#form-associado").removeClass("hidden");
+    }else{
+        $("#form-associado").addClass("hidden");
+    }
 });

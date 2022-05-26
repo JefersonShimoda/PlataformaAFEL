@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('cpf')->unique();
             $table->string('telefone');
             $table->string('cep');
-            $table->string('cid');
-            $table->string('obs');
-            $table->string('nascimento');
-            $table->string('escola');
+            $table->string('cid')->nullable();
+            $table->string('obs')->nullable();
+            $table->string('nascimento')->nullable();
+            $table->string('escola')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
