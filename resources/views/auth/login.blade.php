@@ -1,4 +1,11 @@
     <x-guest-layout>
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            {{-- <a href="http://127.0.0.1:8000/login" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a> --}}
+
+            <a href="http://127.0.0.1:8000/register"
+                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Cadastre-se</a>
+        </div>
+
         <x-auth-card>
             <x-slot name="logo">
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden sm:rounded-lg content-end">

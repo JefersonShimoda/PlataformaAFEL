@@ -50,6 +50,7 @@
             <div class="mt-4">
                 <x-label for="sexo" :value="__('Sexo')" />
                 <select name="sexo" id="sexo" class="block mt-1 w-full" required>
+                    <option value=""></option>
                     <option value="feminino">Feminino</option>
                     <option value="masculino">Masculino</option>
                 </select>
