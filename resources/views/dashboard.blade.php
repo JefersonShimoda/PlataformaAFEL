@@ -14,4 +14,9 @@
             </div>
         </div>
     </div>
+    <style>
+        svg{
+            width: 50px;
+        }
+    </style>
 </x-app-layout>
