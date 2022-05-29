@@ -25,3 +25,15 @@ $("#form-register #tipo").change(function () {
         $("#form-associado").addClass("hidden");
     }
 });
+
+
+$("#btn_tela1").click(function () {
+    $("#tela2").removeClass("hidden");
+    $("#tela1").addClass("hidden");
+});
+
+
+$("#btn_tela2").click(function () {
+        $("#tela1").removeClass("hidden");
+        $("#tela2").addClass("hidden");
+});
