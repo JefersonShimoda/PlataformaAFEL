@@ -9,7 +9,7 @@
     <div class="organizar">
         <div class="background"></div>
 
-        <x-auth-card>
+        <x-auth-card class="shadow-none">
             <x-slot name="logo">
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 overflow-hidden sm:rounded-lg">
                     <img src="imagens/logoCompletaColorida.png" width="400" height="341"
@@ -60,7 +60,7 @@
                     @if (Route::has('password.request'))
                         <a class="underline text-sm text-gray-600 hover:text-gray-900"
                             href="{{ route('password.request') }}">
-                            {{ __('Esqueceu a senha ?') }}
+                            {{ __('Esqueceu a senha?') }}
                         </a>
                     @endif
                     <x-button class="ml-3">
@@ -75,15 +75,20 @@
 <style>
     .organizar {
         display: flex;
-        justify-content: right;
-        align-items: right;
     }
 
     .background {
         background-image: url(/imagens/backgroundAFEL.jpeg);
-        width: 100%;
         background-size: cover;
-        z-index: -1;
+        flex-grow: 1;
+    }
+
+    #auth-card {
+        background: white;
+    }
+
+    #auth-card-form {
+        box-shadow: none;
     }
 
 </style>
